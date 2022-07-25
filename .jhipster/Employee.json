@@ -1,0 +1,65 @@
+{
+  "applications": "*",
+  "changelogDate": "20220725202107",
+  "clientRootFolder": "Process",
+  "databaseType": "mongodb",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "employee",
+  "fields": [
+    {
+      "fieldName": "dateOfJoining",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "employeeId",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^[0-9]{3,8}$"
+    },
+    {
+      "fieldName": "accountId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ifscCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^[A-Z]{4}0[A-Z0-9]{6}$"
+    },
+    {
+      "fieldName": "bankName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bankHolderName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pfNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "esiNumber",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "The Entity Employee.\\n@author anindya100c",
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "Process",
+  "name": "Employee",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "candidate",
+      "otherEntityRelationshipName": "employee",
+      "ownerSide": true,
+      "relationshipName": "userName",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

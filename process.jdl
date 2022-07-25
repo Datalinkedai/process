@@ -1,0 +1,200 @@
+entity Client {
+  name String required,
+  address String,
+  description String,
+  businessStartDate LocalDate,
+  businessEndDate LocalDate,
+  payout PayoutStructure,
+  status Status,
+  remarks String,
+  taskName String,
+  taskType TaskType
+}
+
+enum PayoutStructure {
+  MONTH,
+  WEEK,
+  WORK,
+  YEAR,
+  FULL_AMOUNT,
+  SPRINT
+}
+
+enum Status {
+  ACTIVE,
+  INACTIVE,
+  COMPLETED,
+  REJECTED
+}
+
+enum TaskType {
+  FILE,
+  COUNT
+}
+
+/**
+ * The Entity Employee.
+ * @author anindya100c
+ */
+entity Employee {
+  dateOfJoining Instant required,
+  employeeId String pattern(/^[0-9]{3,8}$/)
+  accountId String,
+  ifscCode String pattern(/^[A-Z]{4}0[A-Z0-9]{6}$/),
+  bankName String,
+  bankHolderName String,
+  pfNumber String,
+  esiNumber String
+}
+
+/**
+ * The Entity Task.
+ * @author anindya100c
+ */
+entity Task {
+  totalNoOfWork Integer,
+  startDate Instant,
+  endDate Instant,
+  health HealthyTask,
+  status Status,
+  workName String,
+  remarks String,
+  totalDuration Duration,
+  doneDuration Duration,
+  verified Boolean
+  freeText1 String,
+  freeText2 String,
+  freeText3 String,
+  freeText4 String,
+  freeText5 String,
+  taskAssignedDate Instant,
+  taskCompletedDate Instant
+}
+
+/**
+ * The Enum HealthyTask.
+ * @author anindya100c
+ */
+enum HealthyTask {
+  SUCCESS,
+  GOOD,
+  BAD,
+  FAILED
+}
+
+/**
+ * The Qualtiy entity.
+ * @author anindya100c
+ */
+entity Qualtiy {
+  date LocalDate required,
+  reWork Boolean,
+  reWorkStatus Status,
+  remarks String,
+  fileReachDate Instant,
+  qcStartDate Instant,
+  qcEndDate Instant,
+  result Double min(0) max(100),
+  reWorkDuration Duration
+}
+
+/**
+ * The Payout entity.
+ * @author anindya100c
+ */
+entity Payout {
+  totalDuration Duration,
+  costPerDuration Double,
+  totalCost Double,
+  bonusPayout Double,
+  costPerDurationBonus Double,
+  totalDurationBonus Duration,
+  totalCostBonus Double,
+  pfAmount Double,
+  esiAmount Double
+}
+
+/**
+ * The PayoutBonus entity.
+ * @author A true hipster
+ */
+entity PayoutBonus {
+  basicDuration Duration,
+  basicCost Double,
+  bonusDuration Duration,
+  bonusCost Double
+}
+
+entity Candidate {
+  firstName String required pattern(/^[a-zA-Z]+$/),
+  lastName String required pattern(/^[a-zA-Z]+$/),
+  phoneNumber String required pattern(/^\d{10}$/),
+  userName String required unique pattern(/^[a-zA-Z0-9_]{3,40}$/),
+  eductionQualification String,
+  resumeLink String,
+  status Status
+}
+
+entity Documents {
+  documentType DocumentType required,
+  document ImageBlob,
+  documentLink String,
+  documentExpiry LocalDate,
+  verified Boolean
+}
+
+service * with serviceImpl
+
+relationship OneToOne {
+	Employee{userName} to Candidate
+}
+
+enum DocumentType {
+  IMAGE(image), CERTIFICATE(certificate)
+}
+
+relationship OneToOne {
+	Task{assignedTo} to Employee
+}
+
+relationship OneToOne {
+	Task{assignedBy} to Employee
+}
+
+relationship OneToOne {
+	Task{verifiedBy} to Employee
+}
+
+relationship ManyToOne {
+	Task{documentsTask} to Documents
+}
+
+relationship OneToOne {
+	Qualtiy{task} to Task
+}
+
+relationship OneToOne {
+	Qualtiy{qcBy} to Employee
+}
+
+relationship OneToOne {
+	Qualtiy{assignedTo} to Employee
+}
+
+relationship OneToOne {
+	Payout{employee} to Employee
+}
+
+relationship OneToOne {
+	Payout{authorisedBy} to Employee
+}
+
+relationship OneToOne {
+	Payout{client} to Client
+}
+relationship OneToOne {
+  Documents{fromCandidate} to Employee
+}
+relationship OneToOne {
+  Documents{verifiedBy} to Employee
+}

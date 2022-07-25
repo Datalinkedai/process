@@ -1,0 +1,83 @@
+{
+  "applications": "*",
+  "changelogDate": "20220725202109",
+  "clientRootFolder": "Process",
+  "databaseType": "mongodb",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "qualtiy",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "reWork",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "reWorkStatus",
+      "fieldType": "Status",
+      "fieldValues": "ACTIVE,INACTIVE,COMPLETED,REJECTED"
+    },
+    {
+      "fieldName": "remarks",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fileReachDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "qcStartDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "qcEndDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "result",
+      "fieldType": "Double",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "reWorkDuration",
+      "fieldType": "Duration"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "The Qualtiy entity.\\n@author anindya100c",
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "Process",
+  "name": "Qualtiy",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "task",
+      "otherEntityRelationshipName": "qualtiy",
+      "ownerSide": true,
+      "relationshipName": "task",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "qualtiy",
+      "ownerSide": true,
+      "relationshipName": "qcBy",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "qualtiy",
+      "ownerSide": true,
+      "relationshipName": "assignedTo",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

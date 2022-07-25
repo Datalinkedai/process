@@ -1,0 +1,63 @@
+{
+  "applications": "*",
+  "changelogDate": "20220725202106",
+  "clientRootFolder": "Process",
+  "databaseType": "mongodb",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "client",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "businessStartDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "businessEndDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "payout",
+      "fieldType": "PayoutStructure",
+      "fieldValues": "MONTH,WEEK,WORK,YEAR,FULL_AMOUNT,SPRINT"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "ACTIVE,INACTIVE,COMPLETED,REJECTED"
+    },
+    {
+      "fieldName": "remarks",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taskName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taskType",
+      "fieldType": "TaskType",
+      "fieldValues": "FILE,COUNT"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "Process",
+  "name": "Client",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,119 @@
+{
+  "applications": "*",
+  "changelogDate": "20220725202108",
+  "clientRootFolder": "Process",
+  "databaseType": "mongodb",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "task",
+  "fields": [
+    {
+      "fieldName": "totalNoOfWork",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "health",
+      "fieldType": "HealthyTask",
+      "fieldTypeJavadoc": "The Enum HealthyTask.\\n@author anindya100c",
+      "fieldValues": "SUCCESS,GOOD,BAD,FAILED"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "ACTIVE,INACTIVE,COMPLETED,REJECTED"
+    },
+    {
+      "fieldName": "workName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "remarks",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalDuration",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "doneDuration",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "verified",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "freeText1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeText2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeText3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeText4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeText5",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taskAssignedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "taskCompletedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "The Entity Task.\\n@author anindya100c",
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "Process",
+  "name": "Task",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "task",
+      "ownerSide": true,
+      "relationshipName": "assignedTo",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "task",
+      "ownerSide": true,
+      "relationshipName": "assignedBy",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "task",
+      "ownerSide": true,
+      "relationshipName": "verifiedBy",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "documents",
+      "otherEntityRelationshipName": "task",
+      "relationshipName": "documentsTask",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

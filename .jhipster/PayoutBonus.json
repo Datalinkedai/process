@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20220725202111",
+  "clientRootFolder": "Process",
+  "databaseType": "mongodb",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payout_bonus",
+  "fields": [
+    {
+      "fieldName": "basicDuration",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "basicCost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "bonusDuration",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "bonusCost",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "The PayoutBonus entity.\\n@author A true hipster",
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "Process",
+  "name": "PayoutBonus",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

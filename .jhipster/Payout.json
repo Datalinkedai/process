@@ -1,0 +1,78 @@
+{
+  "applications": "*",
+  "changelogDate": "20220725202110",
+  "clientRootFolder": "Process",
+  "databaseType": "mongodb",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payout",
+  "fields": [
+    {
+      "fieldName": "totalDuration",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "costPerDuration",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalCost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "bonusPayout",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "costPerDurationBonus",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalDurationBonus",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "totalCostBonus",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "pfAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "esiAmount",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "The Payout entity.\\n@author anindya100c",
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "Process",
+  "name": "Payout",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "payout",
+      "ownerSide": true,
+      "relationshipName": "employee",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "payout",
+      "ownerSide": true,
+      "relationshipName": "authorisedBy",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "payout",
+      "ownerSide": true,
+      "relationshipName": "client",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
